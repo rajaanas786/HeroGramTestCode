@@ -16,7 +16,7 @@ const Home = () => {
       try {
         const response = await axios.post('/auth/login', formData);
         localStorage.setItem('token', response.data.token); // Store the token
-        navigate('/videos')
+        navigate('/upload')
       } catch (err) {
         setError(err.response?.data?.message || 'Error');
       }
