@@ -51,3 +51,5 @@ This guide provides a detailed step-by-step process for deploying a full-stack a
 - Use SSH to access the server:
   ```bash
   ssh root@159.65.122.248
+
+  ##You need to run the both backend and frontend on deployement server
