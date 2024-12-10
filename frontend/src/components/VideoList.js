@@ -12,7 +12,7 @@ const VideoList = () => {
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/videos/list');
+        const response = await axios.get('http://http://59.65.122.248:5000/api/videos/list');
         setVideos(response.data); // Update state with the fetched videos
         
       } catch (err) {
@@ -25,7 +25,7 @@ const VideoList = () => {
 
   // Copy the video URL to clipboard
   const copyLink = (videoPath) => {
-    const videoUrl = `http://localhost:5000${videoPath}`; // Correctly concatenate the base URL and path
+    const videoUrl = `http://http://59.65.122.248:5000${videoPath}`; // Correctly concatenate the base URL and path
     navigator.clipboard.writeText(videoUrl)
       .then(() => {
         alert('Link copied to clipboard!');
@@ -48,7 +48,7 @@ const VideoList = () => {
             
             
             <ReactPlayer
-              url={`http://localhost:5000${video.path}`}
+              url={`http://http://59.65.122.248:5000${video.path}`}
               controls
               width="100%"
               height="auto"
