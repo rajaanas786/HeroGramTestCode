@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import ReactPlayer from 'react-player';
 
 
 
@@ -12,7 +11,7 @@ const VideoList = () => {
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const response = await axios.get('http://api/videos/list');
+        const response = await axios.get('http://159.65.122.248:5000/api/videos/list');
         setVideos(response.data); // Update state with the fetched videos
         
       } catch (err) {
