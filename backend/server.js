@@ -22,7 +22,7 @@ app.use(helmet());
 // Enable CORS
 app.use(
   cors({
-    origin: "http://localhost:3000", // Allow requests from your frontend
+    origin: "59.65.122.248:3000", // Allow requests from your frontend
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // Allowed HTTP methods
     credentials: true, // Enable cookies and auth headers
     allowedHeaders: ["Content-Type", "Authorization"], // Include necessary headers
