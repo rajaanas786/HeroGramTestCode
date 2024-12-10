@@ -8,7 +8,7 @@ const VideoList = () => {
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const response = await axios.get('http://159.65.122.248/api/videos/list');
+        const response = await axios.get('http://159.65.122.248:5000/api/videos/list');
         setVideos(response.data); // Update state with the fetched videos
       } catch (err) {
         console.error('Error fetching videos:', err);
@@ -20,7 +20,7 @@ const VideoList = () => {
 
   // Copy the video URL to clipboard
   const copyLink = (videoPath) => {
-    const videoUrl = `http://159.65.122.248${videoPath}`; // Correctly concatenate the base URL and path
+    const videoUrl = `http://159.65.122.248:5000${videoPath}`; // Correctly concatenate the base URL and path
     navigator.clipboard.writeText(videoUrl)
       .then(() => {
         alert('Link copied to clipboard!');
@@ -39,7 +39,7 @@ const VideoList = () => {
             <h2 className="text-lg font-semibold">{video.title}</h2>
             <p className="text-sm text-gray-600">{video.category}</p>
             <video controls>
-              <source src={`http://159.65.122.248${video.path}`} type="video/mp4" />
+              <source src={`http://159.65.122.248:5000${video.path}`} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
             <button

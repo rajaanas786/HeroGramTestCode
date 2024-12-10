@@ -9,7 +9,7 @@ const MediaView = () => {
   useEffect(() => {
     const fetchMedia = async () => {
       try {
-        const response = await axios.get(`http://159.65.122.248/api/videos/${id}`);
+        const response = await axios.get(`http://159.65.122.248:5000/api/videos/${id}`);
         setMedia(response.data); // Assuming your backend returns media data
       } catch (err) {
         console.error('Error fetching media:', err);
@@ -40,14 +40,14 @@ const MediaView = () => {
             </video> */}
 
 <video controls className="w-full">
-  <source src={`http://159.65.122.248uploads/videos/${media.filename}`} type="video/mp4" />
+  <source src={`http://159.65.122.248:5000/uploads/videos/${media.filename}`} type="video/mp4" />
   Your browser does not support the video tag.
 </video>
 
           </div>
         ) : (
           <div>
-            <img src={`http://159.65.122.248/uploads/images/${media.filename}`} alt="Media" className="w-full" />
+            <img src={`http://159.65.122.248:5000/uploads/images/${media.filename}`} alt="Media" className="w-full" />
           </div>
         )}
         <div className="mt-4">
