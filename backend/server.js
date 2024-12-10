@@ -22,12 +22,13 @@ app.use(helmet());
 // Enable CORS
 app.use(
   cors({
-    origin: "59.65.122.248:3000", // Allow requests from your frontend
+    origin: "http://159.65.122.248:3000", // Correct origin with protocol and IP address
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // Allowed HTTP methods
     credentials: true, // Enable cookies and auth headers
     allowedHeaders: ["Content-Type", "Authorization"], // Include necessary headers
   })
 );
+
 
 // Handle preflight requests for all routes
 app.options("*", cors());
