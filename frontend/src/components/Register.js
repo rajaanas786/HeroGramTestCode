@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import axios from '../axiosInstance';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
+
 
 const Register = () => {
   const [formData, setFormData] = useState({ username: '', email: '', password: '' });
   const [error, setError]=useState('');
   const [passwordError, setPasswordError]=useState('');
+  const navigate = useNavigate(); // Initialize useNavigate
+
 
   const handlePasswordChange = (value) => {
     setFormData({ ...formData, password: value });
@@ -22,7 +26,10 @@ const Register = () => {
     setError('');
     try {
       const response = await axios.post('/auth/register', formData);
-      alert(response.data.message);
+      // alert(response.data.message);
+      navigate('/')
+
+      
     } catch (err) {
       setError(err.response?.data?.message || 'Error');
     }

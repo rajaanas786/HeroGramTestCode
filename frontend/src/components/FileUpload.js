@@ -8,6 +8,8 @@ const FileUpload = () => {
   const [category, setCategory] = useState('');
   const [message, setMessage] = useState('');
   const [dragging, setDragging] = useState(false); // State to track drag events
+  const [isLoading, setIsLoading] = useState(false); // State to track loading status
+  const [userId, setUserId] = useState(null); // State to store the userId
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
@@ -33,6 +35,7 @@ const FileUpload = () => {
     formData.append('title', title);
     formData.append('category', category);
 
+    setIsLoading(true); // Set loading to true when the upload starts
     try {
       const response = await axios.post('/videos/upload', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
@@ -43,6 +46,8 @@ const FileUpload = () => {
       setCategory('');
     } catch (err) {
       setMessage(err.response?.data?.message || 'Error uploading video');
+    } finally {
+      setIsLoading(false); // Set loading to false when the upload finishes
     }
   };
 
@@ -119,11 +124,19 @@ const FileUpload = () => {
             />
           </div>
 
+          {/* Loader */}
+          {isLoading && (
+            <div className="flex justify-center mb-4">
+              <div className="animate-spin rounded-full h-10 w-10 border-t-4 border-blue-600"></div>
+            </div>
+          )}
+
           <button
             type="submit"
             className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300"
+            disabled={isLoading} // Disable the button while uploading
           >
-            Upload Video/Image
+            {isLoading ? 'Uploading...' : 'Upload Video/Image'}
           </button>
         </form>
       </div>

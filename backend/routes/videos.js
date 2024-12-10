@@ -34,6 +34,11 @@ const upload = multer({
 // Upload video and save metadata
 router.post('/upload', upload.single('file'), async (req, res) => {
   const { title, category } = req.body;
+  // const userId = req.user.id; // Get the user ID from the authenticated user
+
+
+    // Get the user ID from the authenticated user
+
 
   if (!req.file) {
     return res.status(400).json({ message: 'Video file is required.' });
@@ -43,7 +48,9 @@ router.post('/upload', upload.single('file'), async (req, res) => {
     title,
     category,
     filename: req.file.filename, // Save the filename
-    path: `/uploads/videos/${req.file.filename}`, // Save relative path
+    path: `/uploads/videos/${req.file.filename}`
+
+    // Save relative path
   });
 
   try {

@@ -22,7 +22,7 @@ app.use(helmet());
 // Enable CORS
 app.use(
   cors({
-    origin: "http://159.65.122.248:3000", // Correct origin with protocol and IP address
+    origin: "http://localhost:3000", // Correct origin with protocol and IP address
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // Allowed HTTP methods
     credentials: true, // Enable cookies and auth headers
     allowedHeaders: ["Content-Type", "Authorization"], // Include necessary headers
@@ -64,6 +64,8 @@ app.use(
       if (filePath.endsWith(".mp4")) {
         res.setHeader("Content-Type", "video/mp4");
         res.setHeader("Accept-Ranges", "bytes"); // Enable range requests
+        res.setHeader('Access-Control-Allow-Origin', '*');  // Or restrict to specific origin
+
       }
     },
   })
@@ -73,6 +75,7 @@ app.use(
 app.get("/api", (req, res) => {
   res.send("API is running");
 });
+
 
 // Authentication Middleware (for Protected Routes)
 function authenticateToken(req, res, next) {
