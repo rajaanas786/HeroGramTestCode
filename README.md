@@ -26,6 +26,7 @@ This guide provides a detailed step-by-step process for deploying a full-stack a
 - API endpoint: `http://159.65.122.248:5000/api`
 
 ---
+### You need to run the both backend and frontend on deployment server
 
 ## Prerequisites
 
@@ -52,4 +53,4 @@ This guide provides a detailed step-by-step process for deploying a full-stack a
   ```bash
   ssh root@159.65.122.248
 
-  ##You need to run the both backend and frontend on deployement server
+ 
