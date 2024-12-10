@@ -46,13 +46,10 @@ const VideoList = () => {
 
             
             
-            <ReactPlayer
-              url={`http://159.65.122.248:5000${video.path}`}
-              controls
-              width="100%"
-              height="auto"
-            />
-            
+            <video controls>
+              <source src={`http://159.65.122.248:5000${video.path}`} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
             <button
               onClick={() => copyLink(video.path)} // Pass the video path to copyLink
               className="mt-4 bg-blue-600 text-white py-2 px-4 rounded"
